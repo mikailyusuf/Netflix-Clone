@@ -7,9 +7,19 @@
 
 import UIKit
 
+
+enum Section:Int{
+    case TrendingMovies = 0
+    case TrendingTv = 1
+    case Popular = 2
+    case Upcoming = 3
+    case TopRated = 4
+}
+
+
 class HomeViewController: UIViewController {
     
-    let sectionTitles:[String] = ["Trending Movies","Popular","Trending Tv", "Upcoming movies","Top rated"]
+    let sectionTitles:[String] = ["Trending Movies","Trending Tv","Popular", "Upcoming movies","Top rated"]
     
     let homeFeedTable:UITableView = {
         let tableView = UITableView(frame: .zero,style: .grouped)
@@ -26,25 +36,15 @@ class HomeViewController: UIViewController {
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         configureNavBar()
-        getTrendingMovies()
+        getData()
         
         let headerImgeView = HeroHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerImgeView
     }
     
     
-    private func getTrendingMovies(){
-        APICaller.shared.getTrendingMovies { results in
-            
-            switch results {
-            case .success(let movies):
-                print(movies)
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-            
-        }
+    private func getData(){
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,6 +82,78 @@ extension HomeViewController:UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         
+        switch indexPath.section{
+        case Section.TrendingMovies.rawValue:
+            APICaller.shared.getTrendingMovies { results in
+
+                switch results {
+                case .success(let movies):
+                    cell.configure(with: movies)
+
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+
+            }
+            
+        case Section.Popular.rawValue :
+            APICaller.shared.getPopularMovies { results in
+                
+                switch results {
+                case .success(let movies):
+                    cell.configure(with: movies)
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+            }
+        
+        case Section.TrendingTv.rawValue :
+            
+            APICaller.shared.getTrendingTv { results in
+
+                switch results {
+                case .success(let movies):
+                    cell.configure(with: movies)
+
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+
+        }
+            
+        case Section.Upcoming.rawValue:
+            APICaller.shared.getUpcomingMovies { results in
+
+                switch results {
+                case .success(let movies):
+                    cell.configure(with: movies)
+
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+
+            }
+            
+        case Section.TopRated.rawValue:
+            APICaller.shared.getTopRatedMovies { results in
+                
+                switch results {
+                case .success(let movies):
+                    cell.configure(with: movies)
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+                
+            }
+            
+        default:
+            return UITableViewCell()
+            
+        }
+        
         return cell
     }
     
@@ -107,7 +179,7 @@ extension HomeViewController:UITableViewDelegate, UITableViewDataSource{
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: 20, width: 100, height: header.bounds.height)
         header.textLabel?.textColor = .label
-        header.textLabel?.text = header.textLabel?.text?.lowercased()
+        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
