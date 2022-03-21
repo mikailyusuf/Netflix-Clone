@@ -26,6 +26,7 @@
 		52DD129527E71E7E00232009 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD129427E71E7E00232009 /* TitleCollectionViewCell.swift */; };
 		52DD129727E728BA00232009 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD129627E728BA00232009 /* MovieTableViewCell.swift */; };
 		52DD129927E72AD400232009 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD129827E72AD400232009 /* MovieViewModel.swift */; };
+		52DD129B27E798A000232009 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD129A27E798A000232009 /* SearchResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		52DD129427E71E7E00232009 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		52DD129627E728BA00232009 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		52DD129827E72AD400232009 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		52DD129A27E798A000232009 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				52DBB34527E3CE84006086C8 /* UpComingViewController.swift */,
 				52DBB34727E3CEA7006086C8 /* SearchViewController.swift */,
 				52DBB34A27E3CEEE006086C8 /* DownloadsViewController.swift */,
+				52DD129A27E798A000232009 /* SearchResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				52DD129927E72AD400232009 /* MovieViewModel.swift in Sources */,
 				52DBB33127E3CBF8006086C8 /* SceneDelegate.swift in Sources */,
 				52DBB35827E3EA73006086C8 /* Movie.swift in Sources */,
+				52DD129B27E798A000232009 /* SearchResultViewController.swift in Sources */,
 				52DBB34427E3CE6D006086C8 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
